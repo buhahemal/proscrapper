@@ -61,7 +61,6 @@ class get_ground {
 				    ResultSet Countrydataset=st.executeQuery();
 
 				     if(Countrydataset.next()) { 
-				    	 System.out.println(Countrydataset.getString("Id"));
 				    	 country_ID = Countrydataset.getInt("Id");
 				      }
 				     else
@@ -78,7 +77,6 @@ class get_ground {
 								    ResultSet aCountrydataset=st.executeQuery();
 
 								     if(aCountrydataset.next()) { 
-								    	 System.out.println(aCountrydataset.getString("Id"));
 								    	 country_ID = aCountrydataset.getInt("Id");
 								      }
 
@@ -91,20 +89,30 @@ class get_ground {
 						}
 
 				     }
-//
-//	    		 Element table = recordtable.get(i);
-//	    		 Elements rows = table.select("tr");
-//	    		 System.out.println(table);
-//	    		 for (int j = 1; j < rows.size(); j++) { //first row is the col names so skip it.
-//	    		        Element row = rows.get(j);
-//	    		        Elements cols = row.select("td");
-//	    		        System.out.println(cols.get(0).text());
-//	    		        System.out.println(cols.get(1).text());
-//	    		        System.out.println(cols.get(2).text());
-//	    		        System.out.println(cols.get(3).text());
-//	    		        System.out.println(cols.get(4).text());
-//	    		 }
-//	    		 break;
+				     System.out.println(country_ID);
+				     
+
+	    		 Element table = recordtable.get(i);
+	    		 Elements rows = table.select("tr");
+	    		 System.out.println(table);
+	    		 for (int j = 1; j < rows.size(); j++) { //first row is the col names so skip it.
+	    		        Element row = rows.get(j);
+	    		        Elements cols = row.select("td");
+	    		        System.out.println(cols.get(0).text());
+	    		        System.out.println(cols.get(1).text());
+	    		        System.out.println(cols.get(2).text());
+	    		        System.out.println(cols.get(3).text());
+	    		        System.out.println(cols.get(4).text());
+				     PreparedStatement stmt=con.prepareStatement("insert into c_grounds(team_id,ground_city,ground_name,no_of_test,no_of_odi,no_of_t20) values(?,?,?,?,?,?)");  
+			    	 stmt.setInt(1, country_ID);  
+			    	 stmt.setString(2,cols.get(0).text());
+			    	 stmt.setString(3,cols.get(1).text());
+			    	 stmt.setString(4,cols.get(2).text());
+			    	 stmt.setString(5,cols.get(3).text());
+			    	 stmt.setString(6,cols.get(4).text());
+			    	 int chk=stmt.executeUpdate();  
+    		 }
+	    		 break;
 	    	   }
 	    	   
 	       }catch(Exception e){
