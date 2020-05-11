@@ -59,6 +59,7 @@ class get_Teams {
 							}
 					     }
 				}
+			JOptionPane.showMessageDialog(null,"Teams has been Scrapped Successfully","Success O peration",1);
 			new team_gui_data().setVisible(true);
 				
 	       }catch(Exception e){

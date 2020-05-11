@@ -81,7 +81,7 @@ public class User_login extends javax.swing.JFrame {
 		User_password = new javax.swing.JLabel();
 
 		Username = new javax.swing.JTextField();
-		Username.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		Username.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		Username.setToolTipText("Enter Your Username");
 		Userpassword = new javax.swing.JPasswordField();
 		Userpassword.setFont(new Font("Tahoma", Font.PLAIN, 11));

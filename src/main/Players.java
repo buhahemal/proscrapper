@@ -77,6 +77,7 @@ class get_player {
 				}
 
 			}
+			JOptionPane.showMessageDialog(null,"Players has been Scrapped Successfully","Success O peration",1);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

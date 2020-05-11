@@ -35,6 +35,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.DropMode;
 
 @SuppressWarnings("serial")
 public class Scrapperhome extends javax.swing.JFrame {
