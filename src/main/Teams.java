@@ -45,19 +45,19 @@ class get_Teams {
 				      }
 				     else
 				     {
-				    	 try {
-				    		 PreparedStatement stmt=con.prepareStatement("insert into c_team(team_name,team_url) values(?,?)");  
-					    	 stmt.setString(1, link.text());  
-					    	 stmt.setString(2,link.attr("href"));
-					    	 int i=stmt.executeUpdate();  
-					    	 
-				    	 }
-				    	 catch (Exception e) {
+							try {
+								PreparedStatement stmt = con
+										.prepareStatement("insert into c_team(team_name,team_url) values(?,?)");
+								stmt.setString(1, link.text());
+								stmt.setString(2, link.attr("href"));
+								int i = stmt.executeUpdate();
 
-				    		    JOptionPane.showMessageDialog(null, e.getMessage(),"Error",2);
-				    		    System.exit(0);
-						}
-				     }
+							} catch (Exception e) {
+
+								JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+								System.exit(0);
+							}
+					     }
 				}
 			new team_gui_data().setVisible(true);
 				
