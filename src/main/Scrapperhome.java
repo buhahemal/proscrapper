@@ -52,7 +52,7 @@ public class Scrapperhome extends javax.swing.JFrame {
 	get_Teams Team_data = new get_Teams();
 	get_player Player_data = new get_player();
 	get_ground venue_data = new get_ground();
-
+	animate load =  new animate();
 	public Scrapperhome() {
 		setType(Type.POPUP);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Scrapperhome.class.getResource("/img/Untitled.png")));
@@ -288,9 +288,10 @@ public class Scrapperhome extends javax.swing.JFrame {
 			}
 
 			private void Getteamsdata(java.awt.event.ActionEvent evt) {
-
+				//load.animate_loading();
 				Team_data.get_Teams();
-				// System.out.println("Done");
+				//load.animate_sucess();
+				
 
 			}
 
