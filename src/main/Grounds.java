@@ -54,21 +54,57 @@ class get_ground {
 	    	   {
 	    		   //System.out.println(i);
 	    		   //System.out.println(Country_list.get(i));
-	    	     
-	    		 Element table = recordtable.get(i);
-	    		 Elements rows = table.select("tr");
-	    		 System.out.println(table);
-	    		 for (int j = 1; j < rows.size(); j++) { //first row is the col names so skip it.
-	    		        Element row = rows.get(j);
-	    		        Elements cols = row.select("td");
-	    		        System.out.println(cols.get(0).text());
-	    		        System.out.println(cols.get(1).text());
-	    		        System.out.println(cols.get(2).text());
-	    		        System.out.println(cols.get(3).text());
-	    		        System.out.println(cols.get(4).text());
-	    		        break;
-	    		 }
-	    		 break;
+	    		   Integer country_ID = 0;
+	    		   
+	    		   	PreparedStatement st = con.prepareStatement("select * from c_team where team_name=? limit 1");
+					st.setString(1, Country_list.get(i));
+				    ResultSet Countrydataset=st.executeQuery();
+
+				     if(Countrydataset.next()) { 
+				    	 System.out.println(Countrydataset.getString("Id"));
+				    	 country_ID = Countrydataset.getInt("Id");
+				      }
+				     else
+				     {
+				    	 try {
+				    		 PreparedStatement stmt=con.prepareStatement("insert into c_team(team_name,team_url) values(?,?)");  
+					    	 stmt.setString(1, Country_list.get(i));  
+					    	 stmt.setString(2,"");
+					    	 int ids=stmt.executeUpdate();  
+					    	 if(ids == 1)
+					    	 {
+					    		 	PreparedStatement ast = con.prepareStatement("select * from c_team where team_name=? limit 1");
+									st.setString(1, Country_list.get(i));
+								    ResultSet aCountrydataset=st.executeQuery();
+
+								     if(aCountrydataset.next()) { 
+								    	 System.out.println(aCountrydataset.getString("Id"));
+								    	 country_ID = aCountrydataset.getInt("Id");
+								      }
+
+					    	 }
+				    	 }
+				    	 catch (Exception e) {
+
+				    		    JOptionPane.showMessageDialog(null, e.getMessage(),"Error",2);
+				    		    System.exit(0);
+						}
+
+				     }
+//
+//	    		 Element table = recordtable.get(i);
+//	    		 Elements rows = table.select("tr");
+//	    		 System.out.println(table);
+//	    		 for (int j = 1; j < rows.size(); j++) { //first row is the col names so skip it.
+//	    		        Element row = rows.get(j);
+//	    		        Elements cols = row.select("td");
+//	    		        System.out.println(cols.get(0).text());
+//	    		        System.out.println(cols.get(1).text());
+//	    		        System.out.println(cols.get(2).text());
+//	    		        System.out.println(cols.get(3).text());
+//	    		        System.out.println(cols.get(4).text());
+//	    		 }
+//	    		 break;
 	    	   }
 	    	   
 	       }catch(Exception e){
