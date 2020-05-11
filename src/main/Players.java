@@ -33,6 +33,7 @@ class get_player {
 	       try{
 	    	   
 	    	   Elements Div_top = PageHtmldata.select("nav.tabnav");
+	    	   System.out.println(Div_top);
 	    	   Elements links = Div_top.select("a");
 	    	   for(Element link : links)
 	    	   {
@@ -90,7 +91,7 @@ public class Players {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		get_player gp= new get_player();
-			gp.get_player();
+		gp.get_player();
 	}
 
 }

@@ -32,9 +32,8 @@ class get_Teams {
 	public static void get_Teams(){
 	       try{
 	    	   
-	    	   Elements Div_top = PageHtmldata.select("div.article-body");
-	    	   Elements pcontent = Div_top.select("p");
-	    	   Elements links = pcontent.select("a");
+	    	   Element Div_top = PageHtmldata.select("div.teams-section").first();
+	    	   Elements links = Div_top.select("a");
 				for (Element link : links) {
 					System.out.println("Href: " + link.attr("href"));
 					System.out.println(" News: " + link.text());
@@ -60,6 +59,8 @@ class get_Teams {
 						}
 				     }
 				}
+			new team_gui_data().setVisible(true);
+				
 	       }catch(Exception e){
 		   System.out.println(e.getMessage());
 	    JOptionPane.showMessageDialog(null, e.getStackTrace(),"Error",2);

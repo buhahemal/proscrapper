@@ -13,17 +13,22 @@ import javax.swing.JOptionPane;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
+
 class get_ground {
+	static String PageSHtmldata;
 	static Document PageHtmldata;
 	static Connection con = null;
 	public get_ground() {
 		try {
-			URL url = new URL("https://en.wikipedia.org/wiki/List_of_cricket_grounds_by_capacity");
+			URL url = new URL("https://www.cricket-stats.net/genp/grounds.shtml");
 			URLConnection connection = url.openConnection();
 			con = Connect.connect();
-			PageHtmldata = Jsoup.connect("https://en.wikipedia.org/wiki/List_of_cricket_grounds_by_capacity").get();
+			PageSHtmldata = String.valueOf(Jsoup.connect("https://www.cricket-stats.net/genp/grounds.shtml").get());
+			PageHtmldata = Jsoup.parse(PageSHtmldata);
+			 
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(),"Error",2);
 		}
@@ -31,47 +36,41 @@ class get_ground {
 	
 	public static void get_geounds(){
 	       try{
-	    	   ArrayList<String> Ground_list = new ArrayList<>();	    	   
-	    	   Element Div_top = PageHtmldata.select("table.wikitable").first();
-	    	   //System.out.println(Div_top);
-	    	   Elements rows = Div_top.select("tr");
-	    	   for (int i = 1; i < rows.size(); i++) { //first row is the col names so skip it.
-	    		    Element row = rows.get(i);
-	    		    Elements cols = row.select("td");
-	    		    System.out.println(row);
-	    		    Ground_list.add(cols.get(2).text());
-	    		}
-	    	   System.out.println(Ground_list);
 	    	   
-	    	   Elements pcontent = Div_top.select("strong");
-	    	   System.out.println(pcontent);
+	    	   ArrayList<String> Country_list=new ArrayList<String>();
+	    	   Elements Country_array_part = PageHtmldata.select("span:not(.LinkMed)");
+	    	   Elements Country_array = Country_array_part.select("span:not(.Comments)");
+	    	   ArrayList<String> list=new ArrayList<String>();
+	    	   for(Element country : Country_array)
+	    	   {
+	    		   Country_list.add(country.text());
+	    	   }
 	    	   
-				for (Element link : pcontent) {
-					Integer length=link.text().length();
-					System.out.println(length);
-					System.out.println("last char = " + link.text().charAt(link.text().length() - 2));
-					PreparedStatement st = con.prepareStatement("select * from c_team where team_name=? limit 1");
-					st.setString(1, link.text());
-				    ResultSet r1=st.executeQuery();
-
-				     if(r1.next()) {   
-				      }
-				     else
-				     {
-				    	 try {
-//				    		 PreparedStatement stmt=con.prepareStatement("insert into c_team(team_name,team_url) values(?,?)");  
-//					    	 stmt.setString(1, link.text());  
-//					    	 stmt.setString(2,link.attr("href"));
-//					    	 int i=stmt.executeUpdate();  
-//					    	 
-				    	 }
-				    	 catch (Exception e) {
-
-				    		    JOptionPane.showMessageDialog(null, e.getMessage(),"Error",2);
-				    		    System.exit(0);
-						}
-				     }
-				}
+	    	   Elements recordtable = PageHtmldata.select("div.RecordTable");
+	    	   //Element table = Div_top.get(2);
+	    	   //System.out.println(Div_top.size());
+	    	  // System.out.println(table);
+	    	   for (int i=0; i<Country_list.size(); i++) 
+	    	   {
+	    		   //System.out.println(i);
+	    		   //System.out.println(Country_list.get(i));
+	    	     
+	    		 Element table = recordtable.get(i);
+	    		 Elements rows = table.select("tr");
+	    		 System.out.println(table);
+	    		 for (int j = 1; j < rows.size(); j++) { //first row is the col names so skip it.
+	    		        Element row = rows.get(j);
+	    		        Elements cols = row.select("td");
+	    		        System.out.println(cols.get(0).text());
+	    		        System.out.println(cols.get(1).text());
+	    		        System.out.println(cols.get(2).text());
+	    		        System.out.println(cols.get(3).text());
+	    		        System.out.println(cols.get(4).text());
+	    		        break;
+	    		 }
+	    		 break;
+	    	   }
+	    	   
 	       }catch(Exception e){
 		   System.out.println(e.getMessage());
 	    JOptionPane.showMessageDialog(null, e.getStackTrace(),"Error",2);
@@ -82,7 +81,7 @@ public class Grounds {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		get_ground gt= new get_ground();
-			gt.get_geounds();
+		gt.get_geounds();
 	}
 
 }

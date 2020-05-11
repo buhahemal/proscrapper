@@ -49,6 +49,7 @@ public class Scrapperhome extends javax.swing.JFrame {
     static String text ;
     Scrapdata Scrp=new Scrapdata();
     get_Teams Team_data=new get_Teams();
+    Players player_data=new Players();
     
     public Scrapperhome() {
     	setType(Type.POPUP);
@@ -331,15 +332,17 @@ public class Scrapperhome extends javax.swing.JFrame {
         Team.setText("Team");
         Team.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GetCategory(evt);
+            Getteamsdata(evt);
             }
 
-            private void GetCategory(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logindetailsActionPerformed
+            private void Getteamsdata(java.awt.event.ActionEvent evt) {
 
-            	Team_data.get_Teams();
-            	new team_gui_data().setVisible(true);
             	
-            }//GEN-LAST:event_logindetailsActionPerformed
+            	Team_data.get_Teams();
+            	System.out.println("Done");
+            
+            	
+            }
            
         });
         Main.add(Team);
@@ -348,12 +351,12 @@ public class Scrapperhome extends javax.swing.JFrame {
         Player.setText("Player");
         Player.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //logindetailsActionPerformed(evt);
+                Getplayer_data(evt);
             }
 
-            private void logindetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logindetailsActionPerformed
-                //new Login_Details().setVisible(true);
-            }//GEN-LAST:event_logindetailsActionPerformed
+            private void Getplayer_data(java.awt.event.ActionEvent evt) {
+            	Getplayer_data(evt);
+            }
            
         });
         Main.add(Player);
@@ -377,9 +380,9 @@ public class Scrapperhome extends javax.swing.JFrame {
                 logindetailsActionPerformed(evt);
             }
 
-            private void logindetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logindetailsActionPerformed
+            private void logindetailsActionPerformed(java.awt.event.ActionEvent evt) {
                 new Login_Details().setVisible(true);
-            }//GEN-LAST:event_logindetailsActionPerformed
+            }
            
         });
         Main.add(logindetails);
