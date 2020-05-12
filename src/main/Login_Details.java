@@ -46,13 +46,8 @@ ResultSet res= null;
         jScrollPane1 = new javax.swing.JScrollPane();
         data_table = new javax.swing.JTable();
         User_interact_pnl = new javax.swing.JPanel();
-        year = new javax.swing.JComboBox<>();
         Username_lbl = new javax.swing.JLabel();
         Username_lbl.setForeground(Color.WHITE);
-        month = new javax.swing.JComboBox<>();
-        day = new javax.swing.JComboBox<>();
-        Date = new javax.swing.JLabel();
-        Date.setForeground(Color.WHITE);
         username = new javax.swing.JComboBox<>();
         username.setToolTipText("Choose User-Name");
 
@@ -130,32 +125,8 @@ ResultSet res= null;
         User_interact_pnl.setBackground(new java.awt.Color(51, 51, 51));
         User_interact_pnl.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year : ",  "2020", "2021", "2022"}));
-        year.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                yearItemStateChanged(evt);
-            }
-        });
-
         Username_lbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Username_lbl.setText("User_Name : ");
-
-        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month : ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        month.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                monthItemStateChanged(evt);
-            }
-        });
-
-        day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day : ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        day.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                dayItemStateChanged(evt);
-            }
-        });
-
-        Date.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Date.setText("Login_Date : ");
 
         username.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User_Name : " }));
         username.addItemListener(new java.awt.event.ItemListener() {
@@ -165,37 +136,25 @@ ResultSet res= null;
         });
 
         javax.swing.GroupLayout gl_User_interact_pnl = new javax.swing.GroupLayout(User_interact_pnl);
-        User_interact_pnl.setLayout(gl_User_interact_pnl);
         gl_User_interact_pnl.setHorizontalGroup(
-            gl_User_interact_pnl.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gl_User_interact_pnl.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Username_lbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Date)
-                .addGap(18, 18, 18)
-                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        	gl_User_interact_pnl.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_User_interact_pnl.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(Username_lbl)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(username, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+        			.addGap(369))
         );
         gl_User_interact_pnl.setVerticalGroup(
-            gl_User_interact_pnl.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gl_User_interact_pnl.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(gl_User_interact_pnl.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Username_lbl)
-                    .addComponent(Date)
-                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        	gl_User_interact_pnl.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_User_interact_pnl.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_User_interact_pnl.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(Username_lbl)
+        				.addComponent(username, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap())
         );
+        User_interact_pnl.setLayout(gl_User_interact_pnl);
 
         javax.swing.GroupLayout gl_login_detail_main = new javax.swing.GroupLayout(login_detail_main);
         gl_login_detail_main.setHorizontalGroup(
@@ -236,11 +195,9 @@ ResultSet res= null;
 
     private void usernameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usernameItemStateChanged
 String sql;
-if(day.getSelectedIndex()==0&&month.getSelectedIndex()==0&&year.getSelectedIndex()==0){
+
 sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getSelectedItem()+"' ";
-      }else {
-sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getSelectedItem()+"' and DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}  try {
+  try {
        pre=con.prepareStatement(sql);
        res=pre.executeQuery();
        data_table.setModel(DbUtils.resultSetToTableModel(res));
@@ -248,56 +205,6 @@ sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getS
         JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
         }
     }//GEN-LAST:event_usernameItemStateChanged
-
-    private void dayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dayItemStateChanged
-String sql ; 
-if(month.getSelectedIndex()!=0&&year.getSelectedIndex()!=0&&username.getSelectedIndex()==0){
-  sql = "select NAME,TYPE,DATE,TIME from login_details where DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}else {
-  sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getSelectedItem()+"' and DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";   
-}
-       try {
-       pre=con.prepareStatement(sql);
-       res=pre.executeQuery();
-       data_table.setModel(DbUtils.resultSetToTableModel(res));
-       }catch(Exception e){
-       JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-       }
-    }//GEN-LAST:event_dayItemStateChanged
-
-    private void monthItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_monthItemStateChanged
-String sql;
-        if(day.getSelectedIndex()!=0&&month.getSelectedIndex()!=0&&year.getSelectedIndex()!=0&&username.getSelectedIndex()==0){
-sql = "select NAME,TYPE,DATE,TIME from login_details where DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}else {
-sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getSelectedItem()+"' and DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}       
-try {
-       pre=con.prepareStatement(sql);
-       res=pre.executeQuery();
-       data_table.setModel(DbUtils.resultSetToTableModel(res));
-       }catch(Exception e){
-       JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-       }
- 
-    }//GEN-LAST:event_monthItemStateChanged
-
-    private void yearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_yearItemStateChanged
-String sql;
-if(month.getSelectedIndex()!=0&&day.getSelectedIndex()!=0&&username.getSelectedIndex()==0){
-sql = "select NAME,TYPE,DATE,TIME from login_details where DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}else {
-sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getSelectedItem()+"' and DATE='"+day.getSelectedItem()+"-"+month.getSelectedItem()+"-"+year.getSelectedItem()+"' ";
-}
-    try {
-       pre=con.prepareStatement(sql);
-       res=pre.executeQuery();
-       data_table.setModel(DbUtils.resultSetToTableModel(res));
-       }catch(Exception e){
-       JOptionPane.showMessageDialog(null,e.getMessage(),"Error",2);
-       }
- 
-    }//GEN-LAST:event_yearItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -333,22 +240,16 @@ sql = "select NAME,TYPE,DATE,TIME from login_details where NAME='"+username.getS
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> day;
     
     private javax.swing.JLabel lbl_heading;
     private javax.swing.JLabel Username_lbl;
-    private javax.swing.JLabel Date;
     private javax.swing.JPanel login_detail_main;
     private javax.swing.JPanel heading_lbl;
     private javax.swing.JPanel data_panel;
     private javax.swing.JPanel User_interact_pnl;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable data_table;
-    public javax.swing.JComboBox<String> month;
     private javax.swing.JComboBox<String> username;
-    public javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 private void fill_Username(){
     String sql = "select NAME from users";

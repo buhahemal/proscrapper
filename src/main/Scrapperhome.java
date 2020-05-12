@@ -49,10 +49,10 @@ public class Scrapperhome extends javax.swing.JFrame {
 	static String from;
 	static String text;
 	Scrapdata Scrp = new Scrapdata();
-	get_Teams Team_data = new get_Teams();
-	get_player Player_data = new get_player();
-	get_ground venue_data = new get_ground();
-	animate load =  new animate();
+//	get_Teams Team_data = new get_Teams();
+//	get_player Player_data = new get_player();
+//	get_ground venue_data = new get_ground();
+//	animate load =  new animate();
 	public Scrapperhome() {
 		setType(Type.POPUP);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Scrapperhome.class.getResource("/img/Untitled.png")));
@@ -235,10 +235,10 @@ public class Scrapperhome extends javax.swing.JFrame {
 		searchbar.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (searchbar.getText().equals("")) {
+				
 					searchbar.setText("");
 					searchbar.setForeground(Color.BLACK);
-				}
+				
 			}
 
 			@Override
@@ -288,8 +288,9 @@ public class Scrapperhome extends javax.swing.JFrame {
 			}
 
 			private void Getteamsdata(java.awt.event.ActionEvent evt) {
+				new team_gui_data().setVisible(true);
 				//load.animate_loading();
-				Team_data.get_Teams();
+				//Team_data.get_Teams();
 				//load.animate_sucess();
 				
 
@@ -306,7 +307,7 @@ public class Scrapperhome extends javax.swing.JFrame {
 			}
 
 			private void Getplayer_data(java.awt.event.ActionEvent evt) {
-				Player_data.get_player();
+				//Player_data.get_player();
 			}
 
 		});
@@ -322,7 +323,7 @@ public class Scrapperhome extends javax.swing.JFrame {
 
 			private void venuesget(ActionEvent evt) {
 				// TODO Auto-generated method stub
-				get_ground.get_grounds();
+				//get_ground.get_grounds();
 			}
 		});
 		Main.add(Grounds);

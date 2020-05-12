@@ -13,5 +13,7 @@
 	<classpathentry kind="lib" path="D:/java/Proscrapper/jars/htmlunit-2.9.jar"/>
 	<classpathentry kind="lib" path="D:/java/Proscrapper/jars/jsoup-1.13.1.jar"/>
 	<classpathentry kind="lib" path="D:/java/Proscrapper/jars/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="D:/java/Proscrapper/jars/xchart-3.6.3.jar"/>
+	<classpathentry kind="lib" path="D:/java/Proscrapper/jars/xchart-demo-3.6.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

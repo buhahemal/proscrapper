@@ -53,11 +53,15 @@ public class User_login extends javax.swing.JFrame {
 		});
 
 	}
-
+	public static void disableWarning() {
+	    System.err.close();
+	    System.setErr(System.out);
+	}
 	/**
 	 * Create the application.
 	 */
 	public User_login() {
+		disableWarning();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(User_login.class.getResource("/img/Untitled.png")));
 		initialize();
 		con = Connect.connect();
@@ -363,7 +367,7 @@ public class User_login extends javax.swing.JFrame {
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
 		System.exit(0);
 		this.dispose();
-//		     setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 	}// GEN-LAST:event_jButton2ActionPerformed
 
 }
