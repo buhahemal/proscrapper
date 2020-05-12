@@ -60,14 +60,24 @@ class get_player {
 
 					} else {
 						try {
-							PreparedStatement stmt = con.prepareStatement(
-									"insert into c_player(player_name,player_url,country_Id,status) values(?,?,?,?)");
-							stmt.setString(1, Onebyoneplayerinfo.text());
-							stmt.setString(2, Onebyoneplayerinfo.attr("href"));
-							stmt.setInt(3, country_ID);
-							stmt.setInt(4, 1);
-							int i = stmt.executeUpdate();
+							PreparedStatement Inst = con
+									.prepareStatement("select player_name from c_player where player_name=? limit 1");
+							Inst.setString(1, Onebyoneplayerinfo.text());
+							ResultSet Playerdata = Inst.executeQuery();
 
+							if (Playerdata.next()) {
+
+							} else {
+
+								PreparedStatement stmt = con.prepareStatement(
+										"insert into c_player(player_name,player_url,country_Id,status) values(?,?,?,?)");
+								stmt.setString(1, Onebyoneplayerinfo.text());
+								stmt.setString(2, Onebyoneplayerinfo.attr("href"));
+								stmt.setInt(3, country_ID);
+								stmt.setInt(4, 1);
+								int i = stmt.executeUpdate();
+
+							}
 						} catch (Exception e) {
 
 							JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
@@ -77,7 +87,7 @@ class get_player {
 				}
 
 			}
-			JOptionPane.showMessageDialog(null,"Players has been Scrapped Successfully","Success O peration",1);
+			JOptionPane.showMessageDialog(null, "Players has been Scrapped Successfully", "Success O peration", 1);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

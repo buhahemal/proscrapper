@@ -82,24 +82,33 @@ class get_ground {
 				}
 				Element table = recordtable.get(i);
 				Elements rows = table.select("tr");
-				//System.out.println(table);
+				// System.out.println(table);
 				for (int j = 1; j < rows.size(); j++) { // first row is the col names so skip it.
 					Element row = rows.get(j);
 					Elements cols = row.select("td");
+					PreparedStatement Inst = con
+							.prepareStatement("select ground_name from c_grounds where ground_name=? limit 1");
+					Inst.setString(1, cols.get(1).text());
+					ResultSet Playerdata = Inst.executeQuery();
 
-					PreparedStatement stmt = con.prepareStatement(
-							"insert into c_grounds(team_id,ground_city,ground_name,no_of_test,no_of_odi,no_of_t20) values(?,?,?,?,?,?)");
-					stmt.setInt(1, country_ID);
-					stmt.setString(2, cols.get(0).text());
-					stmt.setString(3, cols.get(1).text());
-					stmt.setString(4, cols.get(2).text());
-					stmt.setString(5, cols.get(3).text());
-					stmt.setString(6, cols.get(4).text());
-					int chk = stmt.executeUpdate();
+					if (Playerdata.next()) {
+
+					} else {
+						PreparedStatement stmt = con.prepareStatement(
+								"insert into c_grounds(team_id,ground_city,ground_name,no_of_test,no_of_odi,no_of_t20) values(?,?,?,?,?,?)");
+						stmt.setInt(1, country_ID);
+						stmt.setString(2, cols.get(0).text());
+						stmt.setString(3, cols.get(1).text());
+						stmt.setString(4, cols.get(2).text());
+						stmt.setString(5, cols.get(3).text());
+						stmt.setString(6, cols.get(4).text());
+						int chk = stmt.executeUpdate();
+					}
+
 				}
 
 			}
-			JOptionPane.showMessageDialog(null,"Venues has been Scrapped Successfully","Success O peration",1);
+			JOptionPane.showMessageDialog(null, "Venues has been Scrapped Successfully", "Success O peration", 1);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
