@@ -82,7 +82,7 @@ class get_ground {
 				}
 				Element table = recordtable.get(i);
 				Elements rows = table.select("tr");
-				System.out.println(table);
+				//System.out.println(table);
 				for (int j = 1; j < rows.size(); j++) { // first row is the col names so skip it.
 					Element row = rows.get(j);
 					Elements cols = row.select("td");
